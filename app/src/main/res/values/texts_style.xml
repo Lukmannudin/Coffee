@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseTextView" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/black_alpha_60</item>
+        <item name="android:lineHeight">16dp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+    
+    <style name="text.label2" parent="BaseTextView">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text.label2.bold" parent="BaseTextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="text.label5" parent="BaseTextView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="text.label5.bold" parent="BaseTextView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+</resources>
