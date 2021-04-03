@@ -6,6 +6,8 @@ package com.oleg.coffee.data
 
 data class Coffee(
     val id: Int,
+    val name: String,
+    val type: String,
     val price: Long,
     val thumbnail: String,
     val description: String,

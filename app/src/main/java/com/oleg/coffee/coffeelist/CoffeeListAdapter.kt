@@ -1,7 +1,6 @@
 package com.oleg.coffee.coffeelist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oleg.coffee.data.Coffee
@@ -12,7 +11,7 @@ import com.oleg.coffee.databinding.ItemCoffeeBinding
  **/
 class CoffeeListAdapter : RecyclerView.Adapter<CoffeeListAdapter.ViewHolder>() {
 
-    var coffee: List<Coffee> = emptyList()
+    var coffees: List<Coffee> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -23,16 +22,24 @@ class CoffeeListAdapter : RecyclerView.Adapter<CoffeeListAdapter.ViewHolder>() {
         viewType: Int
     ): ViewHolder {
         val view = ItemCoffeeBinding.inflate(LayoutInflater.from(parent.context))
-        return ViewHolder(view.root)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(coffees[position])
     }
 
     override fun getItemCount(): Int {
-        return coffee.size
+        return coffees.size
     }
 
-    class ViewHolder constructor(val itemView: View) :
-        RecyclerView.ViewHolder(itemView)
+    class ViewHolder constructor(
+        private val binding: ItemCoffeeBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(coffee: Coffee) {
+            binding.coffeeName.text = coffee.name
+            binding.coffeeType.text = coffee.type
+        }
+    }
 }

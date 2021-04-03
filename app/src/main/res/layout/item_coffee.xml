@@ -3,56 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/small_margin"
+    android:elevation="3dp"
+    app:cardElevation="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/coffee_name"
             style="@style/text.label2.bold"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/coffee_type"
-            app:layout_constraintEnd_toStartOf="@id/coffee_thumbnail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/coffee_thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Americano" />
 
         <TextView
             android:id="@+id/coffee_type"
             style="@style/text.label5.bold"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/coffee_toggle_direction"
-            app:layout_constraintEnd_toStartOf="@id/coffee_thumbnail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coffee_name"
+            app:layout_constraintTop_toBottomOf="@id/coffee_name"
             tools:text="Coffee" />
 
         <TextView
             android:id="@+id/coffee_toggle_direction"
             style="@style/text.label5.bold"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/small_margin"
             android:gravity="center_vertical"
             android:text="@string/show_me_location"
             android:textColor="@color/teal_500"
             app:drawableStartCompat="@drawable/ic_arrow"
-            app:layout_constraintBottom_toBottomOf="@id/coffee_thumbnail"
-            app:layout_constraintEnd_toStartOf="@id/coffee_thumbnail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/coffee_type" />
+            app:layout_constraintTop_toBottomOf="@id/coffee_type" />
 
-        <ImageView
-            android:id="@+id/coffee_thumbnail"
-            android:layout_width="122dp"
-            android:layout_height="101dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

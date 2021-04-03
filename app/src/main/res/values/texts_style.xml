@@ -5,13 +5,32 @@
         <item name="android:lineHeight">16dp</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
-    
+
+    <style name="text.title.big" parent="BaseTextView">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="text.title.big.bold" parent="BaseTextView">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
     <style name="text.label2" parent="BaseTextView">
         <item name="android:textSize">18sp</item>
     </style>
 
     <style name="text.label2.bold" parent="BaseTextView">
         <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="text.label4" parent="BaseTextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="text.label4.bold" parent="BaseTextView">
+        <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
