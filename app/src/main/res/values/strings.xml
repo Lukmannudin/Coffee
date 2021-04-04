@@ -5,4 +5,6 @@
     <string name="maps">maps</string>
     <string name="coffee">coffee</string>
     <string name="show_me_location">Show Me Location</string>
+    <string name="hello">Hello,</string>
+    <string name="time_to_your_coffee">time to your coffee</string>
 </resources>

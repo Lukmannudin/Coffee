@@ -16,11 +16,11 @@ class CoffeeListViewModel @Inject constructor(): ViewModel() {
 
     init {
         val coffee = mutableListOf<Coffee>()
-        for (i in 0 until 10){
-            coffee.add(Coffee(
-                i,"Americano","Coffee",1*1000, "thumbnail","description", 1L,1L, "address"
-            ))
-        }
-        coffeeList.value = coffee
+//        for (i in 0 until 10){
+//            coffee.add(Coffee(
+//                i,"Americano","Coffee",1*1000, "thumbnail","description", 1L,1L, "address"
+//            ))
+//        }
+//        coffeeList.value = coffee
     }
 }

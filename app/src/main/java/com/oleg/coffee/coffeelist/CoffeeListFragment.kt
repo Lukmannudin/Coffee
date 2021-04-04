@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.oleg.coffee.MainActivity
 import com.oleg.coffee.databinding.FragmentCoffeeListBinding
 import com.oleg.coffee.helper.RecyclerViewVerticalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
