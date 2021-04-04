@@ -3,8 +3,10 @@ package com.oleg.coffee.coffeelist
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.oleg.coffee.data.Coffee
 import com.oleg.coffee.databinding.ItemCoffeeBinding
+import com.oleg.coffee.helper.setImage
 
 /**
  * Crafted by Lukman on 03/04/2021.
@@ -21,7 +23,7 @@ class CoffeeListAdapter : RecyclerView.Adapter<CoffeeListAdapter.ViewHolder>() {
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val view = ItemCoffeeBinding.inflate(LayoutInflater.from(parent.context))
+        val view = ItemCoffeeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(view)
     }
 
@@ -40,6 +42,8 @@ class CoffeeListAdapter : RecyclerView.Adapter<CoffeeListAdapter.ViewHolder>() {
         fun bind(coffee: Coffee) {
             binding.coffeeName.text = coffee.name
             binding.coffeeType.text = coffee.type
+
+            binding.coffeeThumbnail.setImage(coffee.thumbnail)
         }
     }
 }

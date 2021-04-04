@@ -2,7 +2,6 @@
 <resources>
     <style name="BaseTextView" parent="Widget.MaterialComponents.TextView">
         <item name="android:textColor">@color/black_alpha_60</item>
-        <item name="android:lineHeight">16dp</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
 

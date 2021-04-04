@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.oleg.coffee.databinding.FragmentCoffeeListBinding
+import com.oleg.coffee.helper.RecyclerViewVerticalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,8 +45,9 @@ class CoffeeListFragment : Fragment() {
 
     private fun setupAdapter() {
         adapter = CoffeeListAdapter()
-        binding.rvCoffee.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvCoffee.adapter = adapter
+        with(binding){
+            rvCoffee.adapter = adapter
+        }
     }
 
     override fun onDestroyView() {
