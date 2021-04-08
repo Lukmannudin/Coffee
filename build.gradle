@@ -34,4 +34,7 @@ task clean(type: Delete) {
 ext {
     glide_version = '4.12.0'
     google_services_version = '17.0.0'
+    retrofit_version = '2.8.1'
+    retrofit_gson_converter_version = '2.6.1'
+    okhttp_version = '4.7.2'
 }

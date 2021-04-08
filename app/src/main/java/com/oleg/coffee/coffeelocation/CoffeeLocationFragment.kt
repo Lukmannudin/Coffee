@@ -29,12 +29,6 @@ class CoffeeLocationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val v = PackageInfoCompat.getLongVersionCode(
-            requireActivity().packageManager.getPackageInfo(
-                GoogleApiAvailability.GOOGLE_PLAY_SERVICES_PACKAGE,
-                0
-            )
-        )
         return inflater.inflate(R.layout.fragment_coffee_location, container, false)
     }
 
