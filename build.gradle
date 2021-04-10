@@ -37,4 +37,7 @@ ext {
     retrofit_version = '2.8.1'
     retrofit_gson_converter_version = '2.6.1'
     okhttp_version = '4.7.2'
+    gson_version = '2.8.6'
+    lottie_version = 'v3.7.0'
+    room_version = '2.2.6'
 }

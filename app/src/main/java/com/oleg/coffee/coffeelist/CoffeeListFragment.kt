@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,11 @@ class CoffeeListFragment : Fragment() {
 
     private val viewmodel: CoffeeListViewModel by viewModels()
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,10 +42,26 @@ class CoffeeListFragment : Fragment() {
         setupObserver()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewmodel.getCoffees()
+    }
+
     private fun setupObserver() {
-        viewmodel.coffeeList.observe(viewLifecycleOwner, { coffees ->
-            if (coffees.isNotEmpty()){
-                adapter.coffees = coffees
+        viewmodel.coffeesState.observe(viewLifecycleOwner, { coffeesState ->
+            when (coffeesState){
+                is CoffeeListViewModel.CoffeesState.Loaded -> {
+                    adapter.coffees = coffeesState.coffees
+                }
+
+                is CoffeeListViewModel.CoffeesState.Failure -> {
+                    Toast.makeText(requireContext(), "Something wrong from our Server, but our engineers are looking for the cause", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                is CoffeeListViewModel.CoffeesState.OnLoading -> {
+
+                }
             }
         })
     }

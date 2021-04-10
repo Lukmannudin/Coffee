@@ -11,7 +11,7 @@ data class Coffee(
     val price: Long,
     val thumbnail: String,
     val description: String,
-    val latitude: Long,
-    val longitude: Long,
+    val latitude: Double,
+    val longitude: Double,
     val address: String,
 )
