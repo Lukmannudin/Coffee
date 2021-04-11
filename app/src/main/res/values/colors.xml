@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black_alpha_60">#99000000</color>
     <color name="teal_500">#009688</color>
+    <color name="zest">#E67E22</color>
+    <color name="corn">#F1C40F</color>
+    <color name="tenn">#D35400</color>
+    <color name="cinnabar">#E74C3C</color>
+    <color name="persian_red">#C0392B</color>
 </resources>

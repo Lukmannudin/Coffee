@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/small_margin"
-        android:text="Lukman"
+        android:text="@string/strangers"
         app:layout_constraintStart_toEndOf="@id/label_hello"
         app:layout_constraintTop_toTopOf="@id/label_hello" />
 
@@ -36,12 +36,24 @@
         app:layout_constraintTop_toBottomOf="@id/label_hello" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="@dimen/large_margin"
-        android:id="@+id/rvCoffee"
+        android:id="@+id/rv_coffee"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/large_margin"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/label_jargon" />
+
+    <include
+        android:id="@+id/state_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        layout="@layout/stateview"
+        app:layout_constraintBottom_toBottomOf="@id/rv_coffee"
+        app:layout_constraintEnd_toEndOf="@id/rv_coffee"
+        app:layout_constraintStart_toStartOf="@id/rv_coffee"
+        app:layout_constraintTop_toTopOf="@id/rv_coffee" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

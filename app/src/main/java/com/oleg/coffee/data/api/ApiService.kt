@@ -1,7 +1,7 @@
 package com.oleg.coffee.data.api
 
 import com.oleg.coffee.data.BaseRemote
-import com.oleg.coffee.data.CoffeeRemote
+import com.oleg.coffee.data.coffeesource.remote.CoffeeRemote
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,6 +1,8 @@
 package com.oleg.coffee.data.coffeesource.local
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 /**
@@ -14,4 +16,11 @@ interface CoffeeDao {
 
     @Query("SELECT * FROM coffeelocal WHERE id = :coffeeId")
     fun getCoffee(coffeeId: Int): CoffeeLocal
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCoffee(vararg coffee: CoffeeLocal)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun saveCoffees(coffees: List<CoffeeLocal>)
+
 }

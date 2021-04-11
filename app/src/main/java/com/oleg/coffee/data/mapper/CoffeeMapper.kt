@@ -1,8 +1,9 @@
 package com.oleg.coffee.data.mapper
 
 import com.oleg.coffee.data.Coffee
-import com.oleg.coffee.data.CoffeeRemote
 import com.oleg.coffee.data.coffeesource.local.CoffeeLocal
+import com.oleg.coffee.data.coffeesource.remote.CoffeeRemote
+import com.oleg.coffee.data.mapper.mapperhelper.*
 
 /**
  * Crafted by Lukman on 10/04/2021.
@@ -41,6 +42,31 @@ private val coffeeRemoteToCoffeeMapper: Mapper<CoffeeRemote, Coffee> =
         }
     }
 
+private val coffeeToCoffeeLocalMapper: Mapper<Coffee, CoffeeLocal> =
+    object : Mapper<Coffee, CoffeeLocal> {
+        override fun map(input: Coffee): CoffeeLocal {
+            return CoffeeLocal(
+                input.id,
+                input.name,
+                input.type,
+                input.price,
+                input.thumbnail,
+                input.description,
+                input.latitude,
+                input.longitude,
+                input.address
+            )
+        }
+    }
+
+private val coffeesToCoffeeLocal: ListMapper<Coffee, CoffeeLocal> =
+    object : ListMapper<Coffee, CoffeeLocal> {
+        override fun map(input: List<Coffee>): List<CoffeeLocal> {
+            return ListMapperImpl(coffeeToCoffeeLocalMapper).map(input)
+        }
+    }
+
+
 private val coffeesRemoteToCoffeesMapper: NullableInputListMapper<CoffeeRemote, Coffee> =
     object : NullableInputListMapper<CoffeeRemote, Coffee> {
         override fun map(input: List<CoffeeRemote>?): List<Coffee> {
@@ -71,4 +97,8 @@ fun List<CoffeeLocal>.toCoffee(): List<Coffee> {
 
 fun CoffeeLocal.toCoffee(): Coffee {
     return coffeeLocalToCoffeeMapper.map(this)
+}
+
+fun List<Coffee>.toCoffeesLocal(): List<CoffeeLocal> {
+    return coffeesToCoffeeLocal.map(this)
 }

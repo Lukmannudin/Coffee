@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 /**
@@ -31,4 +32,8 @@ object ApplicationModule {
     @Provides
     fun provideCoffeeDao(coffeeDatabase: CoffeeDatabase) =
         coffeeDatabase.coffeeDao()
+
+    @Singleton
+    @Provides
+    fun provideDefaultDispatchers() = Dispatchers.IO
 }

@@ -10,6 +10,7 @@ import com.oleg.coffee.R
 
 fun ImageView.setImage(uri: String) {
     Glide.with(this.context).load(uri)
+        .centerCrop()
         .placeholder(R.drawable.ic_no_photos)
         .into(this)
 }

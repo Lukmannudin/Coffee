@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.oleg.coffee.MainActivity
+import com.oleg.coffee.R
 import com.oleg.coffee.databinding.FragmentCoffeeListBinding
-import com.oleg.coffee.helper.RecyclerViewVerticalItemDecoration
+import com.oleg.coffee.helper.gone
+import com.oleg.coffee.helper.visible
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class CoffeeListFragment : Fragment() {
 
@@ -22,11 +23,6 @@ class CoffeeListFragment : Fragment() {
     private lateinit var adapter: CoffeeListAdapter
 
     private val viewmodel: CoffeeListViewModel by viewModels()
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,18 +45,27 @@ class CoffeeListFragment : Fragment() {
 
     private fun setupObserver() {
         viewmodel.coffeesState.observe(viewLifecycleOwner, { coffeesState ->
-            when (coffeesState){
+            when (coffeesState) {
                 is CoffeeListViewModel.CoffeesState.Loaded -> {
-                    adapter.coffees = coffeesState.coffees
+                    onErrorStateView(false)
+                    onLoadingStateView(false)
+
+                    if (coffeesState.coffees.isNotEmpty()) {
+                        onEmptyStateView(false)
+                        adapter.coffees = coffeesState.coffees
+                    } else {
+                        onEmptyStateView(true)
+                    }
                 }
 
                 is CoffeeListViewModel.CoffeesState.Failure -> {
-                    Toast.makeText(requireContext(), "Something wrong from our Server, but our engineers are looking for the cause", Toast.LENGTH_SHORT)
-                        .show()
+                    onLoadingStateView(false)
+                    onErrorStateView(true)
                 }
 
-                is CoffeeListViewModel.CoffeesState.OnLoading -> {
-
+                is CoffeeListViewModel.CoffeesState.OnLoading ->
+                {
+                    onLoadingStateView(true)
                 }
             }
         })
@@ -68,8 +73,47 @@ class CoffeeListFragment : Fragment() {
 
     private fun setupAdapter() {
         adapter = CoffeeListAdapter()
-        with(binding){
+        with(binding) {
             rvCoffee.adapter = adapter
+        }
+    }
+
+    private fun onErrorStateView(status: Boolean){
+        with(binding.stateView) {
+            if (status) {
+                root.visible()
+                lavLoadingState.setAnimation(R.raw.lottie_error_state)
+                lavLoadingState.playAnimation()
+                tvStateDescription.text = getString(R.string.error_state_description)
+            } else {
+                root.gone()
+            }
+        }
+    }
+
+    private fun onLoadingStateView(status: Boolean) {
+        with(binding.stateView) {
+            if (status) {
+                root.visible()
+                lavLoadingState.setAnimation(R.raw.lottie_loading_coffee)
+                lavLoadingState.playAnimation()
+                tvStateDescription.text = getString(R.string.loading_description)
+            } else {
+                root.gone()
+            }
+        }
+    }
+
+    private fun onEmptyStateView(status: Boolean) {
+        with(binding.stateView) {
+            if (status) {
+                root.visible()
+                lavLoadingState.setAnimation(R.raw.lottie_empty_state)
+                lavLoadingState.playAnimation()
+                tvStateDescription.text = getString(R.string.empty_state_description)
+            } else {
+                root.gone()
+            }
         }
     }
 

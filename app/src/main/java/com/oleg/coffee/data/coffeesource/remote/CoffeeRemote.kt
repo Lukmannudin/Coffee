@@ -1,4 +1,4 @@
-package com.oleg.coffee.data
+package com.oleg.coffee.data.coffeesource.remote
 
 
 import com.google.gson.annotations.SerializedName

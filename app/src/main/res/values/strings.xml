@@ -7,4 +7,8 @@
     <string name="show_me_location">Show Me Location</string>
     <string name="hello">Hello,</string>
     <string name="time_to_your_coffee">time to your coffee</string>
+    <string name="loading_description">looking for the best coffee nearby..</string>
+    <string name="empty_state_description">sorry we did not find coffee around you..</string>
+    <string name="error_state_description">sorry something is wrong with our service, but calm down the engineers are looking for the problem</string>
+    <string name="strangers">Strangers</string>
 </resources>
