@@ -12,6 +12,7 @@ import com.oleg.coffee.helper.gone
 import com.oleg.coffee.helper.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -20,7 +21,8 @@ class CoffeeListFragment : Fragment() {
     private var _binding: FragmentCoffeeListBinding? = null
     private val binding: FragmentCoffeeListBinding get() = _binding!!
 
-    private lateinit var adapter: CoffeeListAdapter
+    @Inject
+    lateinit var adapter: CoffeeListAdapter
 
     private val viewmodel: CoffeeListViewModel by viewModels()
 
@@ -63,8 +65,7 @@ class CoffeeListFragment : Fragment() {
                     onErrorStateView(true)
                 }
 
-                is CoffeeListViewModel.CoffeesState.OnLoading ->
-                {
+                is CoffeeListViewModel.CoffeesState.OnLoading -> {
                     onLoadingStateView(true)
                 }
             }
@@ -72,13 +73,12 @@ class CoffeeListFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        adapter = CoffeeListAdapter()
         with(binding) {
             rvCoffee.adapter = adapter
         }
     }
 
-    private fun onErrorStateView(status: Boolean){
+    private fun onErrorStateView(status: Boolean) {
         with(binding.stateView) {
             if (status) {
                 root.visible()
